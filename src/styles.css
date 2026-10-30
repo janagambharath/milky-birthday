@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fredoka", "DM Sans", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  --color-paper: #fff8ec;
+  --color-paper-deep: #f7ecd7;
+  --color-butter: #ffc93c;
+  --color-butter-deep: #dd9b00;
+  --color-cherry: #e63946;
+  --color-cherry-deep: #b21e2e;
+  --color-sky: #4dabf7;
+  --color-sky-deep: #2b7fc4;
+  --color-leaf: #43a854;
+  --color-leaf-deep: #2f7d3e;
+  --color-ink: #3b2f2f;
+  --color-ink-soft: #6b5a54;
+  --color-blush: #ffe8e9;
+
+  --shadow-sticker: 0 3px 0 rgba(59, 47, 47, 0.9);
+  --shadow-card: 0 10px 30px -12px rgba(59, 47, 47, 0.25);
+
+  --animate-float-slow: floatY 7s ease-in-out infinite;
+  --animate-wiggle: wiggle 0.5s ease-in-out;
+  --animate-pop-in: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-flicker: flicker 1.6s ease-in-out infinite;
+  --animate-balloon-up: balloonUp linear forwards;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("/fonts/fredoka-variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans-variable.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans-italic-variable.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  /* subtle paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.48 0 0 0 0 0.38 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+/* Chunky sticker button — the one memorable interactive element */
+.btn-sticker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sticker);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+  touch-action: manipulation;
+  user-select: none;
+}
+.btn-sticker:hover { transform: translateY(-2px); }
+.btn-sticker:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 rgba(59, 47, 47, 0.9);
+}
+.btn-sticker:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 3px;
+}
+
+/* Washi tape strip */
+.tape {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  background: color-mix(in srgb, var(--tape-color, var(--color-butter)) 82%, white);
+  opacity: 0.92;
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 3px rgba(59, 47, 47, 0.18);
+  pointer-events: none;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Letter lines for the brother's message */
+.letter-lines {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(77, 171, 247, 0.28) 31px,
+    rgba(77, 171, 247, 0.28) 32px
+  );
+  line-height: 32px;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg) scale(1.05); }
+  75% { transform: rotate(6deg) scale(1.05); }
+}
+@keyframes popIn {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes rise {
+  0% { transform: translateY(40px) scale(0.96); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+  30% { transform: scale(1.08) rotate(2deg); opacity: 0.92; }
+  60% { transform: scale(0.94) rotate(-1deg); opacity: 1; }
+}
+@keyframes balloonUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-115%); }
+}
+@keyframes envelopeFlap {
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(180deg); }
+}
+@keyframes letterOut {
+  from { transform: translateY(0) scale(0.9); opacity: 0; }
+  to { transform: translateY(-46%) scale(1); opacity: 1; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.envelope-flap-open { animation: envelopeFlap 0.7s ease-in-out forwards; transform-origin: top center; }
+.letter-out { animation: letterOut 0.8s 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* Respect reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Safe-area padding for the floating player */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* 3D flip cards (Memory Match) */
+.card3d { perspective: 700px; }
+.card3d-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+.card3d-inner.flipped { transform: rotateY(180deg); }
+.card3d-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card3d-back { transform: rotateY(180deg); }

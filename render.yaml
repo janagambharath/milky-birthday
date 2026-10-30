@@ -1,0 +1,9 @@
+# Render blueprint — one-click static-site deploy.
+# Or create manually: Static Site → build `npm ci && npm run build`, publish `dist`.
+services:
+  - type: web
+    name: milky-birthday
+    env: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: false

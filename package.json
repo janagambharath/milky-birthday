@@ -1,0 +1,36 @@
+{
+  "name": "milky-birthday",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "prebuild": "node scripts/unpack-assets.mjs",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "photos": "node scripts/process-photos.mjs",
+    "lint": "eslint src --ext .ts,.tsx || true",
+    "test": "vitest run",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.3",
+    "lucide-react": "^0.545.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^5.0.1",
+    "playwright": "^1.64.1",
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.4",
+    "vitest": "^3.2.4"
+  }
+}
