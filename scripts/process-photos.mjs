@@ -31,7 +31,7 @@ const PHOTOS = [
   ['25F52651-666C-4413-AB95-E2A86FBA4214-photo-7789D27D-F714-405F-BEBE-E24EFDA19994.jpg', 'temple-visit'],
   ['8DAF50DE-0936-4543-9197-4D5EDD9A2A4F-photo-58E5BA85-9B08-4649-8CEA-DFE34F68335A.jpg', 'rangoli-artist'],
   ['238FDE1A-F2EE-4C19-A629-6AFDEAD5538B-photo-89EC9A82-8A17-4CFA-A1AB-DF6C8F5A866A.jpg', 'little-queen'],
-  ['D558FD1D-7DA6-439A-A9C0-2E23DE7AC667-photo-D72527EC-E325-4184-9CD6-F142C27C7D10.jpg', 'cheeky-grin'],
+  ['6543D317-E787-406F-BB28-C9BAB36D3E0D-photo-3DBC955D-469A-4C4F-84B2-E7B02DBCE807.jpg', 'cheeky-grin'],
   ['CB3B2AAC-F2A0-4EA3-9392-52B9451C564F-photo-C9E309C3-A16D-4FD4-8A49-0737B0AE77C4.jpg', 'school-days'],
   ['E8C986CF-6585-44F9-9793-EBB643EC2C41-photo-81916FCE-B811-4599-9684-C2C01622B134.jpg', 'holi-fun'],
   ['508CDBB8-B5C5-4608-A72A-B5303D8E552D-photo-ADE14D0D-B916-4B59-87BC-CC5D4F332BE3.jpg', 'grown-up-gorgeous'],
@@ -46,7 +46,8 @@ const PHOTOS = [
 
 /** Fraction of height to trim for screenshot-style sources: [top, bottom]. */
 const CHROME_TRIM = {
-  'cheeky-grin': [0.13, 0.30], // Facebook post UI around the photo
+  // (none currently — the old Facebook-chrome trim for cheeky-grin was
+  // removed when the photo was replaced 2026-10-30)
 }
 
 async function processOne([file, slug]) {

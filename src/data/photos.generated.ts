@@ -48,8 +48,8 @@ export const PHOTO_ASSETS: PhotoAsset[] = [
     "slug": "cheeky-grin",
     "file": "photos/full/cheeky-grin.webp",
     "thumb": "photos/thumb/cheeky-grin.webp",
-    "width": 899,
-    "height": 911
+    "width": 576,
+    "height": 1280
   },
   {
     "slug": "school-days",
